@@ -7,7 +7,7 @@ use chrono::{self, DateTime};
 #[derive(Serialize, ToBytes)]
 #[encoding(Json)]
 pub struct Output {
-    out: String
+    candles: String
 }
 
 #[plugin_fn]
@@ -28,5 +28,5 @@ pub fn run(fin_data: FinData) -> FnResult<Output> {
             );
         }
     }
-    Ok (Output { out: out.to_string() })
+    Ok (Output { candles: out.to_string() })
 }
