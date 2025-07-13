@@ -1,16 +1,8 @@
 mod exchange_outpost;
 use crate::exchange_outpost::FinData;
-use extism_pdk::{encoding, plugin_fn, FnResult, Json, ToBytes};
-use serde::Serialize;
-
-#[derive(Serialize, ToBytes)]
-#[encoding(Json)]
-pub struct Output {
-    candles: String
-}
-
+use extism_pdk::{plugin_fn, FnResult};
 #[plugin_fn]
-pub fn run(fin_data: FinData) -> FnResult<Output> {
+pub fn run(fin_data: FinData) -> FnResult<String> {
     let mut out = String::new();
     let candles = fin_data.get_candles("symbol_1").unwrap();
         for candle in candles {
@@ -23,5 +15,5 @@ pub fn run(fin_data: FinData) -> FnResult<Output> {
                 candle.close
             );
         }
-    Ok (Output { candles: out.to_string() })
+    Ok(out)
 }
