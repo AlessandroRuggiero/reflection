@@ -7,12 +7,13 @@ pub fn run(fin_data: FinData) -> FnResult<String> {
     let candles = fin_data.get_candles("symbol_1").unwrap();
         for candle in candles {
             out += &format!(
-                "{} {} {} {} {}\n",
+                "{} {} {} {} {} {}\n",
                 candle.timestamp,
                 candle.open,
                 candle.high,
                 candle.low,
-                candle.close
+                candle.close,
+                candle.volume
             );
         }
     Ok(out)
