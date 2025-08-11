@@ -1,0 +1,9 @@
+{
+    "function_name": "Reflection",
+    "description": "A function that returns the input financial data as string",
+    "financial_data_keys": [
+        "symbol_1"
+    ],
+    "call_arguments_schema": {},
+    "enforce_schemas": false
+}
