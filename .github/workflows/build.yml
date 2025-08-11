@@ -31,3 +31,14 @@ jobs:
         body: "Finfunc release for testing"
         prerelease: true
         make_latest: false
+    - name: Upload Manifest
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./manifest.json
+        asset_name: manifest.json
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "Finfunc release for testing"
+        prerelease: true
+        make_latest: false
