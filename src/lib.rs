@@ -5,6 +5,16 @@ use extism_pdk::{plugin_fn, FnResult};
 pub fn run(fin_data: FinData) -> FnResult<String> {
     let mut out = String::new();
     let candles = fin_data.get_candles("symbol_1")?;
-    out += &format!("len: {}", candles.len());
+    for candle in candles {
+        out += &format!(
+            "{} {} {} {} {} {}\n",
+            candle.timestamp,
+            candle.open,
+            candle.high,
+            candle.low,
+            candle.close,
+            candle.volume
+        );
+    }
     Ok(out)
 }
